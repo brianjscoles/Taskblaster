@@ -1,13 +1,23 @@
-<html>
+<html ng-app='Todoloo'>
   <head>
-    <h1>Todoloo</h1>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"/>
-    <script src="app.js"/>
+    <h2>Todoloo</h2>
+    <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"></script> -->
+    <script src="angular.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
-    <form>
-
+    <form novalidate ng-controller='formController' ng-submit ="addTask()">
+      <input type="text" value="Add new todo here" name="newTask" ng-model="task">
+      <input type="submit" value="Click to submit">
     </form>
+    <div ng-controller="panelController">
+      <div class="task" ng-controller="taskController" ng-repeat="task in tasks">
+        <div class="task-text">{{task}}</div> <button class="checkbox" ng-click="closeTask(task)">&#10003</button>
+      </div>
+    </div>
   </body>
 
 </html>
+
+

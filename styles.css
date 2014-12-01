@@ -1,0 +1,32 @@
+
+.task {
+  width: 200px;
+  padding: 8px;
+  border: 1px solid powderblue;
+  border-radius: 3px;
+  background-color: skyblue;
+  margin: 3px;
+  position: relative;
+}
+
+.panel {
+  width: 50%;
+  height: 80%;
+  overflow: auto;
+}
+
+.checkbox {
+  position: absolute;
+  right: 8;
+}
+
+.task-text {
+  width: 85%;
+  overflow: hidden;
+  display: inline-block;
+  white-space: pre-wrap;      /* CSS3 */   
+  white-space: -moz-pre-wrap; /* Firefox */    
+  white-space: -pre-wrap;     /* Opera <7 */   
+  white-space: -o-pre-wrap;   /* Opera 7 */    
+  word-wrap: break-word;      /* IE */
+}
