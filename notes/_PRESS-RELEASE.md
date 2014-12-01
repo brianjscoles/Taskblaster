@@ -17,28 +17,27 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  Todoloo is a clean and simple web application for managing to-do lists.  You can sign in, add and remove tasks, sort by tags and priority, and everything else you'd expect from a good task manager.
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
-
+  Anyone who has a busy lifestyle and tasks to track will benefit from Todoloo!
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  Todoloo is a clean and simple web application for managing to-do lists.  You can sign in, add and remove tasks, sort by tags and priority, and everything else you'd expect from a good task manager.
 
 ## Problem ##
-  > Describe the problem your product solves.
+  Keeping track of many disparate to-dos is stressful and difficult!  Let Todoloo remember everything for you. 
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  Fast, easy interface for adding, viewing, and checking off tasks.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  "After I created an account on Todoloo, I get about 30% more done every day.  It's amazing!"
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  Just visit projects.brianscoles.com/todoloo and create an account in one easy step!  Could not be simpler.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  "After I created an account on Todoloo, I get about 30% more done every day.  It's amazing!"
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  Please wait 36 hours, and then browse on over to projects.brianscoles.com/todoloo to check out the service!
