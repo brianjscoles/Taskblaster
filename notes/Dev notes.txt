@@ -17,7 +17,7 @@ A to-do app.
 1. Angular and HTML:
   interface for adding tasks (bar at top) and checking off tasks from list
 
-2. Express/Node: serve up the angular assests upon request to localhost
+2. Express/Node: serve up the angular assets upon request to localhost
 
 <note: janky storage could be achieved via fs and JSON.stringify, like we did for Web Historian>
 
