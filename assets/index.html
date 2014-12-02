@@ -16,7 +16,7 @@
       <input type="submit" value="Add task">
     </form>
     <div ng-controller="panelController">
-      <div class="task" ng-controller="taskController" ng-repeat="task in data">
+      <div class="task" ng-controller="taskController" ng-repeat="task in data | filter:{priority:'purple'} ">
         <div class="task-text">{{task.text}}</div> 
         <button class="cancel-box" ng-click="closeTask(task)">X</button>
         <button class="check-box" ng-click="closeTask(task)">&#10003</button>

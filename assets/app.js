@@ -8,17 +8,19 @@
 .factory('taskFactory', ["$firebase", 
   function($firebase){
     var dataRef = new Firebase('https://vivid-heat-2074.firebaseio.com/');
-    return $firebase(dataRef).$asArray();
+    var syncObject = $firebase(dataRef).$asArray();
+    return syncObject;
   }])
 
 .controller('formController', ["$scope", "taskFactory", 
   function($scope, taskFactory){
+    $scope.data = taskFactory;
 
     $scope.addTask = function(){
-      $scope.data = taskFactory;
       console.log("new task submitted!");
-      $scope.data.$add({"text":$scope.task});
+      $scope.data.$add({"text":$scope.task, "priority":"purple"});
       $scope.task = "";
+      console.log($scope.data);
     }
   }])
 
@@ -40,22 +42,8 @@
     function($scope, taskFactory){
       var syncObject = taskFactory;
       $scope.data = syncObject;
-      console.log($scope.data);
     }])
 
 })();
 
 
-
-/* FIREBASEY STUFF
-
-
-myDataRef.set('User ' + name + ' says ' + text); string
-myDataRef.set({name: name, text: text}); object
-myDataRef.push({name: name, text: text}); array pushing
-
-myDataRef.on('child_added', function(snapshot) {
-  //We'll fill this in later.
-});
-
-*/
