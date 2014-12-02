@@ -3,7 +3,7 @@
 
   // var tasks = ["get milk","drink milk","get more milk"];
   // var archivedTasks = [];
-  var app = angular.module('Todoloo', ["firebase"])
+  var app = angular.module('TaskBlaster', ["firebase"])
 
 .factory('taskFactory', ["$firebase", 
   function($firebase){

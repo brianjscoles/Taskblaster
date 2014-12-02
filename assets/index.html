@@ -10,14 +10,16 @@
     <script src="app.js"></script>    
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
-  <body ng-app='Todoloo'>
+  <body ng-app='TaskBlaster'>
     <form novalidate ng-controller='formController' ng-submit ="addTask()">
       <input type="text" value="Add new todo here" name="newTask" ng-model="task">
       <input type="submit" value="Add task">
     </form>
     <div ng-controller="panelController">
       <div class="task" ng-controller="taskController" ng-repeat="task in data">
-        <div class="task-text">{{task.text}}</div> <button class="checkbox" ng-click="closeTask(task)">&#10003</button>
+        <div class="task-text">{{task.text}}</div> 
+        <button class="cancel-box" ng-click="closeTask(task)">X</button>
+        <button class="check-box" ng-click="closeTask(task)">&#10003</button>
       </div>
     </div>
   </body>

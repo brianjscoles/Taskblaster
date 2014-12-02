@@ -1,6 +1,6 @@
 
 .task {
-  width: 200px;
+  width: 230px;
   padding: 8px;
   border: 1px solid powderblue;
   border-radius: 3px;
@@ -15,9 +15,19 @@
   overflow: auto;
 }
 
-.checkbox {
+.check-box {
   position: absolute;
-  right: 8;
+  right: 4;
+  color: green;
+  font-weight: bold;
+}
+
+.cancel-box {
+  position: absolute;
+  right: 30;
+  color: darkred;
+  font-weight: bold;
+
 }
 
 .task-text {
