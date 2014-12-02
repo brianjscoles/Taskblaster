@@ -1,9 +1,6 @@
 <html>
   <head>
-    <h2>Todoloo</h2>
-    <!--<script src="angular.min.js"></script>
-    <script src="firebase-node.js"></script>
-    <script src="angularfire.min.js"></script> -->
+    <h2>TaskBlaster</h2>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
@@ -14,12 +11,22 @@
     <form novalidate ng-controller='formController' ng-submit ="addTask()">
       <input type="text" value="Add new todo here" name="newTask" ng-model="task">
       <input type="submit" value="Add task">
+      <div>
+        <input type="checkbox" class="switch" ng-model="urgent"/>
+        <label for="switch1">urgent</label>
+        <input type="checkbox" class="switch" ng-model="purple"/>
+        <label for="switch2">make it purple</label>
+      </div>
     </form>
     <div ng-controller="panelController">
-      <div class="task" ng-controller="taskController" ng-repeat="task in data | filter:{priority:'purple'} ">
+      <div ng-controller="taskController" ng-repeat="task in data | filter:filters" class="task {{getCssClasses(task)}}">
         <div class="task-text">{{task.text}}</div> 
-        <button class="cancel-box" ng-click="closeTask(task)">X</button>
-        <button class="check-box" ng-click="closeTask(task)">&#10003</button>
+        <div class="box-container">
+          <button class="box box-urgent" ng-click="toggleClass(task,'urgent')">!</button>
+          <button class="box box-purple" ng-click="toggleClass(task,'purple')">P</button>
+          <button class="box box-cancel" ng-click="closeTask(task)">X</button>
+          <button class="box box-check" ng-click="closeTask(task)">&#10003</button>
+        </div>
       </div>
     </div>
   </body>
