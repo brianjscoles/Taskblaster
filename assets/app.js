@@ -15,10 +15,9 @@
   function($scope, taskFactory){
 
     $scope.addTask = function(){
-      var syncObject = taskFactory;
-      $scope.data = syncObject;
+      $scope.data = taskFactory;
       console.log("new task submitted!");
-      syncObject.$add({"text":$scope.task});
+      $scope.data.$add({"text":$scope.task});
       $scope.task = "";
     }
   }])
@@ -28,20 +27,21 @@
     function($scope, taskFactory){
 
       $scope.closeTask = function(task){
+        console.log("removing task " + task);
         var syncObject = taskFactory;
         $scope.data = syncObject;
-        //archivedTasks.push(task);
-        //$scope.data.$remove(task);
+        $scope.data.$remove(task);
 
       }
   }])
 
-  // a controller for the whole view panel of tasks
-  // .controller('panelController',["$scope", "taskFactory", 
-  //   function($scope){
-  //     var syncObject = taskFactory;
-  //     $scope.data = syncObject;
-  //   }])
+  //a controller for the whole view panel of tasks
+  .controller('panelController',["$scope", "taskFactory", 
+    function($scope, taskFactory){
+      var syncObject = taskFactory;
+      $scope.data = syncObject;
+      console.log($scope.data);
+    }])
 
 })();
 

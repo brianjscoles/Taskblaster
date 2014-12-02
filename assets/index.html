@@ -15,11 +15,11 @@
       <input type="text" value="Add new todo here" name="newTask" ng-model="task">
       <input type="submit" value="Add task">
     </form>
-    <!-- <div ng-controller="panelController">
+    <div ng-controller="panelController">
       <div class="task" ng-controller="taskController" ng-repeat="task in data">
-        <div class="task-text">{{task}}</div> <button class="checkbox" ng-click="closeTask(task)">&#10003</button>
+        <div class="task-text">{{task.text}}</div> <button class="checkbox" ng-click="closeTask(task)">&#10003</button>
       </div>
-    </div> -->
+    </div>
   </body>
 
 </html>
