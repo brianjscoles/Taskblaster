@@ -1,3 +1,40 @@
+h1 {
+  text-align: center;
+  background-color: powderblue;
+  color: indigo;
+  width: 100%;
+
+}
+
+.body-container {
+  margin: auto;
+  width: 70%;
+  background-color: whitesmoke;
+  padding-left: 25px;
+}
+
+.control-form {
+  margin: 10px auto;
+  width: 30%;
+
+}
+
+
+
+.tasks {
+  width: 30%;
+  height: 80%;
+  overflow: auto;
+  display: inline-block;
+  margin: 10px;
+  border: 1px solid black;
+}
+
+.tasks-header {
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+}
 
 .task {
   width: 280px;
@@ -14,11 +51,10 @@
   background-color: lightgreen;
 }
 
-.panel {
-  width: 50%;
-  height: 80%;
-  overflow: auto;
+.box:focus{
+
 }
+
 
 .box {
   font-weight: bold;

@@ -22,6 +22,7 @@
     $scope.addTask = function(){
       var taskParams = {
         "text": $scope.task,
+        "priority": 2
       };
       CssClassList.forEach(function(cssClass){
         taskParams[cssClass] = $scope[cssClass] || false;
@@ -43,12 +44,11 @@
     function($scope, taskFactory){
 
       $scope.closeTask = function(task){
-        console.log("removing task " + task);
         var syncObject = taskFactory;
         $scope.data = syncObject;
         $scope.data.$remove(task);
 
-      }
+      };
 
       $scope.getCssClasses = function(task){
         var classes = [];
@@ -59,21 +59,24 @@
         })
         //console.log("classes are: " + classes.join(" "));
         return classes.join(" ");
-      }
+      };
 
       $scope.toggleClass = function(task,className){
         if(task[className]){
           task[className]=false;
-          console.log("it was true");
         } else {
           task[className] = true;
-          console.log("it was false");
         }
         $scope.data.$save(task);
-        console.log(task);
-        console.log(task[className]);
-        console.log("****************************");
-      }
+      };
+
+      $scope.changePriority = function(task,diff){
+        task.priority += diff;
+        task.priority = Math.min(task.priority,3);
+        task.priority = Math.max(task.priority,1);
+        $scope.data.$save(task);
+
+      };
   }])
 
   //a controller for the whole view panel of tasks
