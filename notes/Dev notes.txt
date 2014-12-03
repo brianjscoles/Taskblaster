@@ -33,3 +33,13 @@ A to-do app.
 7. rewards: do something cute when tasks are completed.
 
 8. security: give users option to encrypt all tasks (how is reversible encryption keyed? use their password i guess)
+
+
+
+
+get filters working
+radio buttons for default priority lvl
+push to brianscoles.com
+test on monitor
+
+

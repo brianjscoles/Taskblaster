@@ -19,6 +19,10 @@ h1 {
 
 }
 
+.filter-fields {
+  margin: auto;
+  width: 30%;
+}
 
 
 .tasks {
@@ -37,22 +41,19 @@ h1 {
 }
 
 .task {
-  width: 280px;
+  width: 90%;
   padding: 8px;
-  border: 1px solid powderblue;
+  border: 2px solid skyblue;
   border-radius: 3px;
-  background-color: skyblue;
+  background-color: powderblue;
   margin: 5px;
   position: relative;
+
 }
 
 
 .box:hover {
   background-color: lightgreen;
-}
-
-.box:focus{
-
 }
 
 
@@ -61,6 +62,7 @@ h1 {
   background-color: white;
   border-radius: 4px;
   border: 1px solid black;
+  outline: none;
 }
 
 .box-check {
@@ -86,7 +88,7 @@ h1 {
 }
 
 .task-text {
-  width: 85%;
+  width: 130px;
   overflow: hidden;
   display: inline-block;
   white-space: pre-wrap;      /* CSS3 */   
@@ -97,7 +99,7 @@ h1 {
 }
 
 .urgent {
-  border: 1px solid red;
+  border: 2px solid firebrick;
   font-weight: bold;
 }
 

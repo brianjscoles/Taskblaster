@@ -14,6 +14,14 @@
     return syncObject;
   }])
 
+.factory('filterFactory', [
+  function(){
+    var filters = {
+      keyword: ""
+  };
+  return filters;
+  }])
+
 .controller('formController', ["$scope", "taskFactory", 
   function($scope, taskFactory){
     $scope.data = taskFactory;
@@ -22,7 +30,7 @@
     $scope.addTask = function(){
       var taskParams = {
         "text": $scope.task,
-        "priority": 2
+        "priority": (Number($scope.priority) || 2 ),
       };
       CssClassList.forEach(function(cssClass){
         taskParams[cssClass] = $scope[cssClass] || false;
@@ -39,6 +47,11 @@
     }
   }])
 
+.controller('filterController', ["$scope", "filterFactory",
+  function($scope, filterFactory){
+    $scope.filters = filterFactory;
+  }])
+
   // a controller for each individual task
   .controller('taskController', ["$scope", "taskFactory",
     function($scope, taskFactory){
@@ -46,11 +59,15 @@
       $scope.closeTask = function(task){
         var syncObject = taskFactory;
         $scope.data = syncObject;
-        $scope.data.$remove(task);
+        $scope.toggleClass(task,"animated lightSpeedOut");
+        setTimeout(function(){
+          $scope.data.$remove(task);
+        },400)
 
       };
 
       $scope.getCssClasses = function(task){
+        console.log("rendering classes")
         var classes = [];
         CssClassList.forEach(function(cssClass){
           if(task[cssClass]) {
@@ -62,6 +79,7 @@
       };
 
       $scope.toggleClass = function(task,className){
+        console.log("toggling class " + className)
         if(task[className]){
           task[className]=false;
         } else {
@@ -72,19 +90,17 @@
 
       $scope.changePriority = function(task,diff){
         task.priority += diff;
-        task.priority = Math.min(task.priority,3);
-        task.priority = Math.max(task.priority,1);
         $scope.data.$save(task);
 
       };
   }])
 
   //a controller for the whole view panel of tasks
-  .controller('panelController',["$scope", "taskFactory", 
-    function($scope, taskFactory){
+  .controller('panelController',["$scope", "taskFactory", "filterFactory",
+    function($scope, taskFactory, filterFactory){
       var syncObject = taskFactory;
       $scope.data = syncObject;
-      $scope.filters = {};
+      $scope.filters = filterFactory;
     }])
 
 })();
