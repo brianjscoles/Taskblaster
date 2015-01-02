@@ -2,7 +2,6 @@
   console.log("initializing app.js");
 
   // var tasks = ["get milk","drink milk","get more milk"];
-  // var archivedTasks = [];
   var CssClassList = ["purple", "urgent"];
 
   var app = angular.module('TaskBlaster', ["firebase"])
@@ -25,7 +24,6 @@
 .controller('formController', ["$scope", "taskFactory", 
   function($scope, taskFactory){
     $scope.data = taskFactory;
-    console.log($scope.data);
 
     $scope.addTask = function(){
       var taskParams = {
@@ -40,9 +38,6 @@
       console.log("new task submitted!");
       $scope.data.$add(taskParams);
       $scope.task = "";
-      console.log("*********current data is***********");
-      console.log($scope.data);
-      console.log("***********************************");
 
     }
   }])
@@ -67,19 +62,16 @@
       };
 
       $scope.getCssClasses = function(task){
-        console.log("rendering classes")
         var classes = [];
         CssClassList.forEach(function(cssClass){
           if(task[cssClass]) {
             classes.push(cssClass);
           }
         })
-        //console.log("classes are: " + classes.join(" "));
         return classes.join(" ");
       };
 
       $scope.toggleClass = function(task,className){
-        console.log("toggling class " + className)
         if(task[className]){
           task[className]=false;
         } else {
