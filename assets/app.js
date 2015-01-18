@@ -1,9 +1,6 @@
 (function(){
   console.log("initializing app.js");
 
-  // var tasks = ["get milk","drink milk","get more milk"];
-  var CssClassList = ["purple", "urgent"];
-
   var app = angular.module('TaskBlaster', ["firebase"])
 
 .factory('taskFactory', ["$firebase", 
@@ -30,9 +27,6 @@
         "text": $scope.task,
         "priority": (Number($scope.priority) || 2 ),
       };
-      CssClassList.forEach(function(cssClass){
-        taskParams[cssClass] = $scope[cssClass] || false;
-      });
 
 
       console.log("new task submitted!");
@@ -59,16 +53,6 @@
           $scope.data.$remove(task);
         },400)
 
-      };
-
-      $scope.getCssClasses = function(task){
-        var classes = [];
-        CssClassList.forEach(function(cssClass){
-          if(task[cssClass]) {
-            classes.push(cssClass);
-          }
-        })
-        return classes.join(" ");
       };
 
       $scope.toggleClass = function(task,className){

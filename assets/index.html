@@ -8,40 +8,91 @@
   <body ng-app='TaskBlaster'>
     <div class="container'fluid"><h1>Taskblaster >>></h1></div>
 
-    <div class="container">
+    <div class="container" style="text-align: center">
       <form class="control-form" novalidate ng-controller='formController' ng-submit ="addTask()">
         <input type="text" size="40" value="Add new todo here" name="newTask" ng-model="task">
-        <input type="submit" value="Add task" ng-disabled="!task">
         <div>
-          <input type="checkbox" class="switch" ng-model="urgent"/>
-          <label>make it urgent</label>
           Priority Level:
-          <input type="radio" name="priority" ng-model="priority" value="1" checked />1
-          <input type="radio" name="priority" ng-model="priority" value="2"/>2
-          <input type="radio" name="priority" ng-model="priority" value="3"/>3
+          <input type="radio" name="priority" ng-model="priority" value="1" checked/> High
+          <input type="radio" name="priority" ng-model="priority" value="2"/> Medium
+          <input type="radio" name="priority" ng-model="priority" value="3"/> Low
         </div>
+        <input type="submit" value="Add task" ng-disabled="!task">
       </form>
       <br>
       <div class="filter-fields" ng-controller='filterController'>
         <input type="text" size="30" value="" class="filter-field" ng-model="filters.keyword"><label>Filter by keyword</label> <br>
       </div>  
     </div>
-    <div class="container main-tasks-container">
+    <div class="container-fluid main-tasks-container">
       <div class = "row">
+      
+      <!-- Task column: high priority -->
         <div ng-controller="panelController" class="tasks col-xs-12 col-md-4">
           <div class="tasks-header">High Priority</div>
           <div ng-controller="taskController" ng-repeat="task in data | filter:{priority: 1} | filter:filters.keyword" class="row task {{getCssClasses(task)}} " ng-class="{'animated lightSpeedOut': completed, 'animated fadeOutDown': deleted}">
-            <div class="task-text col-xs-8">{{task.text}}</div> 
-            <div class="task-button-container col-xs-4 container-fluid row">
-              <div class='col-xs-3'>
+            <div class="task-text col-xs-7">{{task.text}}</div> 
+            <div class="col-xs-5 container-fluid row buttons-container">
+              <div class="change-priority-buttons-container">
+                <button class="box box-priority disabled" ng-click="changePriority(task,-1)" ng-disabled="true"><i class="fa fa-arrow-circle-left"></i></button>
                 <button class="box box-priority" ng-click="changePriority(task,1)"><i class="fa fa-arrow-circle-right"></i></button>
               </div>
-              <button class="box box-urgent" ng-click="toggleClass(task,'urgent')"><i class="fa fa-exclamation"></i></button>
-              <button class="box box-cancel" ng-click="closeTask(task); deleted=true"><i class="fa fa-times"></i></button>
-              <button class="box box-check"   ng-click="closeTask(task); completed=true"><i class="fa fa-check-square-o"></i></button>
+              <div class="task-button-container">
+                <button class="box box-cancel" ng-click="closeTask(task); deleted=true"><i class="fa fa-times"></i></button>
+                <button class="box box-check"   ng-click="closeTask(task); completed=true"><i class="fa fa-check-square-o"></i></button>
+              </div>
             </div>
           </div>
         </div>
+
+      <!-- Task column: med priority -->
+        <div ng-controller="panelController" class="tasks col-xs-12 col-md-4">
+          <div class="tasks-header">Medium Priority</div>
+          <div ng-controller="taskController" ng-repeat="task in data | filter:{priority: 2} | filter:filters.keyword" class="row task {{getCssClasses(task)}} " ng-class="{'animated lightSpeedOut': completed, 'animated fadeOutDown': deleted}">
+            <div class="task-text col-xs-7">{{task.text}}</div> 
+            <div class="col-xs-5 container-fluid row buttons-container">
+              <div class="change-priority-buttons-container">
+                <button class="box box-priority" ng-click="changePriority(task,-1)"><i class="fa fa-arrow-circle-left"></i></button>
+                <button class="box box-priority" ng-click="changePriority(task,1)"><i class="fa fa-arrow-circle-right"></i></button>
+              </div>
+              <div class="task-button-container">
+                <button class="box box-cancel" ng-click="closeTask(task); deleted=true"><i class="fa fa-times"></i></button>
+                <button class="box box-check"   ng-click="closeTask(task); completed=true"><i class="fa fa-check-square-o"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <!-- Task column: low priority -->
+        <div ng-controller="panelController" class="tasks col-xs-12 col-md-4">
+          <div class="tasks-header">Low Priority</div>
+          <div ng-controller="taskController" ng-repeat="task in data | filter:{priority: 3} | filter:filters.keyword" class="row task {{getCssClasses(task)}} " ng-class="{'animated lightSpeedOut': completed, 'animated fadeOutDown': deleted}">
+            <div class="task-text col-xs-7">{{task.text}}</div> 
+            <div class="col-xs-5 container-fluid row buttons-container">
+              <div class="change-priority-buttons-container">
+                <button class="box box-priority" ng-click="changePriority(task,-1)"><i class="fa fa-arrow-circle-left"></i></button>
+                <button class="box box-priority disabled" ng-click="changePriority(task,1)" ng-disabled="true"><i class="fa fa-arrow-circle-right"></i></button>
+              </div>
+              <div class="task-button-container">
+                <button class="box box-cancel" ng-click="closeTask(task); deleted=true"><i class="fa fa-times"></i></button>
+                <button class="box box-check"   ng-click="closeTask(task); completed=true"><i class="fa fa-check-square-o"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+   </div>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+   <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+   <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+   <script src="app.js"></script>    
+  </body>
+
+</html>
+
+
+<!--
         <div ng-controller="panelController" class="tasks col-xs-12 col-md-4">
         <div class="tasks-header">Medium Priority</div>
           <div ng-controller="taskController" ng-repeat="task in data | filter:{priority: 2} | filter:filters.keyword" class="task {{getCssClasses(task)}}" ng-class="{'animated lightSpeedOut': completed, 'animated fadeOutDown': deleted}">
@@ -69,14 +120,5 @@
             </div>
           </div>
         </div>
-      </div>
-   </div>
-   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
-   <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
-   <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
-   <script src="app.js"></script>    
-  </body>
-
-</html>
-
+-->
 
